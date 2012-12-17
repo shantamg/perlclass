@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+sub by_length {
+  $a_len = length($a);
+  $b_len = length($b);
+  if ($a_len < $b_len) {
+    return -1;
+  } elsif ($a_len == $b_len) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
+open (f, '2.txt');
+@sorted = sort by_length <f>;
+while (<@sorted>) {
+  print "$_\n";
+}
+close(f);
