@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+print "reverse polish notation calculator\n";
+my @nums = ();
+my @operators = ('+', '-', '*', '/');
+while (my $latest = <STDIN>) {
+  chomp $latest;
+  if ($latest ~~ @operators) {
+    my $first  = pop @nums;
+    my $second = pop @nums;
+    $result = eval ($second.$latest.$first);
+    push @nums, $result;
+    print "$result\n"
+  } else {
+    push @nums, $latest;
+  }
+}
