@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+while(<DATA>) {
+  chomp;
+  next if $_ =~ /^$/;
+  my $vowels = $_;
+  $vowels =~ s/[^aeiouAEIOU]//g;
+  my $num_vowels = length($vowels);
+  print "$_: $num_vowels\n";
+}
+
+__END__
+
+HELLO how are you doing?
+I'm fine.
