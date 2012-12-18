@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+
+my %defenitions = {};
+while(<DATA>) {
+  next if $_ =~ /^#/ || $_ =~ /^$/;
+  if ($_ =~ /([a-zA-Z]*)\s+=\s*(.*)/) {
+    $defenitions{$1} = $2;
+  }
+  if ($_ =~ /%.*%/) {
+    while ( ($key, $val) = each %defenitions ) {
+      $_ =~ s/%$key%/$val/g;
+    }
+    print $_;
+  }
+}
+
+__END__
+
+# definitions
+age = 23
+year = 1979
+name = Mary Smith
+
+# lines to process and output:
+Her name is %name% and she is %age% years old.
+%name% was born in %year%.
